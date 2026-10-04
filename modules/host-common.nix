@@ -15,6 +15,7 @@ in
   # --- Networking -------------------------------------------------------
   networking.useDHCP = lib.mkDefault true;
   networking.firewall.enable = true;   # openssh opens port 22 on its own
+  networking.firewall.logReversePathDrops = true;
   networking.useNetworkd = true;
 
   # --- Locale -----------------------------------------------------------
@@ -65,9 +66,4 @@ in
   ];
 
   services.fstrim.enable = true;
-
-  # The NixOS release this machine was first installed with. It controls
-  # stateful defaults (database formats etc.), NOT which version you run.
-  # Set it once at install time and don't bump it on upgrades.
-  system.stateVersion = "26.05";
 }
