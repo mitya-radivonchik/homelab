@@ -15,6 +15,7 @@
         sops-nix.nixosModules.sops
         ./modules/host-common.nix
         ./modules/home-wifi.nix
+        ./modules/k3s
         ./hosts/${name}
         { networking.hostName = name; }
       ];

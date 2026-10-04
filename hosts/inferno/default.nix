@@ -6,4 +6,11 @@
   system.stateVersion = "26.05";
 
   homelab.wifi.enable = true;
+
+  homelab.k3s.enable = true;
+  homelab.k3s.lanInterface = "eno1";
+  services.k3s = {
+    nodeIP      = "10.33.0.20"; # has to match the static DHCP lease for inferno lan
+    clusterInit = true;   # first boot only; swap for serverAddr once more nucs arrive
+  };
 }
