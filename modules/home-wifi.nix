@@ -35,7 +35,12 @@ in
       };
       linkConfig.RequiredForOnline = "no";
       routingPolicyRules = [
-        { From = homeSubnet; Table = wifiTable; Priority = 1000; }
+        {
+          From = homeSubnet;
+          IncomingInterface = "lo";   # match only locally generated packets, never forwarded ones
+          Table = wifiTable;
+          Priority = 1000;
+        }
       ];
     };
   };
