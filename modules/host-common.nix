@@ -15,6 +15,7 @@ in
   # --- Networking -------------------------------------------------------
   networking.useDHCP = lib.mkDefault true;
   networking.firewall.enable = true;   # openssh opens port 22 on its own
+  networking.useNetworkd = true;
 
   # --- Locale -----------------------------------------------------------
   time.timeZone = "Europe/Amsterdam";
