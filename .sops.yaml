@@ -1,0 +1,7 @@
+keys:
+  - &me age1r7mfz56nn7v5yr93uuk3zz52l52l2u55gqs5wntvnreh4fm6tfsqghshad
+  - &inferno age17x9k84yndq9lqtdg8xlar9r6j4lthn8d5pltpmc6fnl7ufjfpqxqthq7ra
+creation_rules:
+  - path_regex: secrets/home-wifi\.yaml$
+    key_groups:
+      - age: [*me, *inferno]
