@@ -20,7 +20,7 @@
     devShells.x86_64-linux.default =
       let pkgs = nixpkgs.legacyPackages.x86_64-linux;
       in pkgs.mkShellNoCC {
-        packages = [ pkgs.nixos-rebuild ];
+        packages = [ pkgs.nixos-rebuild pkgs.age pkgs.ssh-to-age ];
         shellHook = ''export PS1="(homelab) $PS1"'';
       };
   };
