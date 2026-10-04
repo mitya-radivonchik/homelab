@@ -14,6 +14,7 @@
         disko.nixosModules.disko
         sops-nix.nixosModules.sops
         ./modules/host-common.nix
+        ./modules/home-wifi.nix
         ./hosts/${name}
         { networking.hostName = name; }
       ];
