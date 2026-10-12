@@ -11,6 +11,5 @@
   homelab.k3s.lanInterface = "enp89s0";
   services.k3s = {
     nodeIP      = "10.33.0.21"; # has to match the static DHCP lease for dungeon lan
-    serverAddr = "https://10.33.0.20:6443"; # point to inferno
   };
 }
