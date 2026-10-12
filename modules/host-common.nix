@@ -3,9 +3,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  sshKeys = [
-    "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAGiWfcoplal9hGHnp23iMZucT871DAmj9J185TG60RFtpNgnSYthoZhUmm/tACIPZ1uO6zPNnayZgWbEzXy++515AE5NG7C7AvE+LihTdptoVVI+f9Hk65Oi9FOurN66x26JjWEoLdqMWMlsY3xf23VMp91EFHS3CPkAKw3sYGdqX/f4Q=="
-  ];
+  sshKeys = import ./ssh-keys.nix;
 in
 {
   # --- Boot -------------------------------------------------------------

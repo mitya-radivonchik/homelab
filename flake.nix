@@ -21,7 +21,19 @@
       ];
     };
   in {
-    nixosConfigurations = nixpkgs.lib.genAttrs [ "inferno" ] mkHost;
+    nixosConfigurations = nixpkgs.lib.genAttrs [ "inferno" ] mkHost // {
+      # build with nixos-rebuild build-image --image-variant iso-installer --flake .#installer
+      installer = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ({ lib, ... }: {
+            networking.hostName = "installer";
+            users.users.root.openssh.authorizedKeys.keys = import ./modules/ssh-keys.nix;
+            systemd.services.sshd.wantedBy = lib.mkForce [ "multi-user.target" ];
+          })
+        ];
+      };
+    };
     devShells.x86_64-linux.default =
       let pkgs = nixpkgs.legacyPackages.x86_64-linux;
       in pkgs.mkShellNoCC {
