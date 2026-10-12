@@ -16,6 +16,9 @@ in
   networking.firewall.logReversePathDrops = true;
   networking.useNetworkd = true;
 
+  # --- Sops -------------------------------------------------------------
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
   # --- Locale -----------------------------------------------------------
   time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_US.UTF-8";

@@ -12,7 +12,6 @@ in
       message = "homelab.wifi needs networking.useNetworkd = true";
     }];
 
-    sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     sops.secrets.wireless = {
       sopsFile = ../secrets/home-wifi.yaml;
       owner = "wpa_supplicant";

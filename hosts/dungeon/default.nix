@@ -5,12 +5,12 @@
  # Set it once at install time and don't bump it on upgrades.
   system.stateVersion = "26.05";
 
-  homelab.wifi.enable = false;
+  homelab.wifi.enable = true;
 
-  homelab.k3s.enable = false;
-  homelab.k3s.lanInterface = "eno1";
+  homelab.k3s.enable = true;
+  homelab.k3s.lanInterface = "enp89s0";
   services.k3s = {
     nodeIP      = "10.33.0.21"; # has to match the static DHCP lease for dungeon lan
-    clusterInit = true;   # first boot only; swap for serverAddr once more nucs arrive
+    serverAddr = "https://10.33.0.20:6443"; # point to inferno
   };
 }
