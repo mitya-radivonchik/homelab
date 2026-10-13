@@ -21,7 +21,7 @@
       ];
     };
   in {
-    nixosConfigurations = nixpkgs.lib.genAttrs [ "inferno" "dungeon" ] mkHost // {
+    nixosConfigurations = nixpkgs.lib.genAttrs [ "inferno" "dungeon" "necro" ] mkHost // {
       # build with nixos-rebuild build-image --image-variant iso-installer --flake .#installer
       installer = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
