@@ -5,8 +5,10 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nixidy.url = "github:arnarg/nixidy/latest";
+    nixidy.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, disko, sops-nix, ... }:
+  outputs = { nixpkgs, disko, sops-nix, nixidy, ... }:
   let
     mkHost = name: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -37,8 +39,12 @@
     devShells.x86_64-linux.default =
       let pkgs = nixpkgs.legacyPackages.x86_64-linux;
       in pkgs.mkShellNoCC {
-        packages = [ pkgs.nixos-rebuild pkgs.age pkgs.ssh-to-age pkgs.sops pkgs.k9s ];
+        packages = [ pkgs.nixos-rebuild pkgs.age pkgs.ssh-to-age pkgs.sops pkgs.k9s nixidy.packages.x86_64-linux.default ];
         shellHook = ''export PS1="(homelab) $PS1"'';
       };
+    nixidyEnvs.x86_64-linux = nixidy.lib.mkEnvs {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      envs.prod.modules = [ ./k8s/env/prod.nix ];
+    };
   };
 }
